@@ -3,7 +3,7 @@ import { Linking } from 'react-native';
 
 export default class CommonDataManager {
   static myInstance = null;
-  baseurl = 'https://toshiladitya.pythonanywhere.com/';
+  baseurl = 'https://gatik.pythonanywhere.com/';
   // baseurl = 'http://104.248.144.49:5000/api/v1/';
 
   /**

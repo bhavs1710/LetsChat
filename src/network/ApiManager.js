@@ -7,7 +7,7 @@ export const BASE_URL = GlobalUrl.getInstance().getUrl();
 class ApiManager {
   static endPoints = {
     SIGNUP: 'user-registration/',
-    SIGNIN: 'user-login/',
+    SIGNIN: 'user-login/?action=login',
     LOGOUT: 'user-logout/',
     PROFILE: 'profile/',
     LOGOUT: 'user-logout/',
@@ -23,7 +23,9 @@ class ApiManager {
     return axios.post(url, data);
   }
   async userLogin(data) {
+    
     const url = BASE_URL + ApiManager.endPoints.SIGNIN;
+    console.warn('url',url);
     return axios.post(url, data);
   }
   async logout() {

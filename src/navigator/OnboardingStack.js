@@ -4,6 +4,7 @@ import Login from '../Onboarding/Login';
 import Splash from '../Onboarding/Splash';
 import Signup from '../Onboarding/Signup';
 import BottomTabStack from './BottomTabStack';
+import Chatwithuser from '../Tabs/Chatwithuser';
 
 const Stack = createNativeStackNavigator();
 
@@ -52,6 +53,7 @@ export default function OnboardingStack() {
       <Stack.Screen name='Login' component={Login} />
       <Stack.Screen name='Signup' component={Signup} />
         <Stack.Screen name='BottomTabStack' component={BottomTabStack} />
+        <Stack.Screen name='Chatwithuser' component={Chatwithuser} />
       {/* ) : ( */}
       {/* )} */}
     </Stack.Navigator>
