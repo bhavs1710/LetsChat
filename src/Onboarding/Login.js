@@ -3,6 +3,7 @@ import { View, Text, Alert, TouchableOpacity, ScrollView, Keyboard } from 'react
 import { CoreTextInput } from '../components';
 import { styles } from './style';
 import ApiClient from '../network/ApiManager';
+import { CommonActions } from '@react-navigation/native';
 
 const Login = (props) => {
       let userEmail = useRef(null);
@@ -21,12 +22,12 @@ const Login = (props) => {
         let data = res.data;
         console.warn('response',data);
         setIsLoading(false);
-        // props.navigation.dispatch(
-        //   CommonActions.reset({
-        //     index: 0,
-        //     routes: [{ name: 'BottomTabStack' }],
-        //   })
-        // );
+        props.navigation.dispatch(
+          CommonActions.reset({
+            index: 0,
+            routes: [{ name: 'BottomTabStack' }],
+          })
+        );
       })
       .catch((error) => {
         console.warn('login error', error);
