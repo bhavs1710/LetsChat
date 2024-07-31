@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import { View, Text, Alert, TouchableOpacity, ScrollView, Keyboard } from 'react-native';
 import { CoreTextInput } from '../components';
 import { styles } from './style';
+import ApiClient from '../network/ApiManager';
 
 const Login = (props) => {
       let userEmail = useRef(null);
@@ -10,10 +11,33 @@ const Login = (props) => {
   const [loginDetail, setLoginDetail] = useState({});
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
+  console.warn('loginDetail',loginDetail);
 
-  const handleLogin = () => {
-    props.navigation.navigate('BottomTabStack');
+  const handleLogin = async () => {
+    setErrors({});
+    // setIsLoading(true);
+    ApiClient.userLogin(loginDetail)
+      .then(async (res) => {
+        let data = res.data;
+        console.warn('response',data);
+        setIsLoading(false);
+        // props.navigation.dispatch(
+        //   CommonActions.reset({
+        //     index: 0,
+        //     routes: [{ name: 'BottomTabStack' }],
+        //   })
+        // );
+      })
+      .catch((error) => {
+        console.warn('login error', error);
+        setIsLoading(false);
+      });
   };
+
+
+//   const handleLogin = () => {
+//     props.navigation.navigate('BottomTabStack');
+//   };
   const handleRegisterPress = () => {
     props.navigation.navigate('Signup');
   };
